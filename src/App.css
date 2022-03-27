@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgb(35, 28, 43);
@@ -14,6 +15,7 @@
   background-position: cover;
   background-repeat: no-repeat;
 }
+
 .App2 {
   width: 100vw;
   height: 100vh;
@@ -26,4 +28,33 @@
   background-image: url('https://res.cloudinary.com/djjgtili7/image/upload/v1648320926/counter/pattern-hills_zcsjgq.svg');
   background-position: bottom;
   background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+img {
+  max-width: 100%;
+
+  margin: 15px 15px 0;
+}
+
+h1 {
+  font-size: 18px;
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+.iconos {
+  position: absolute;
+  top: 92%;
+}
+
+@media (max-width: 560px) {
+  .App {
+    width: 100%;
+    background-size: 100%;
+  }
+  .App2 {
+    width: 100%;
+    background-size: 750px 200px;
+  }
 }
