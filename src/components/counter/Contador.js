@@ -45,6 +45,7 @@ const DivCard = styled.div`
   );
   border-radius: 10px;
   margin-bottom: 15px;
+  box-shadow: -3px 10px 14px 0px rgba(0, 0, 0, 0.82);
 
   @media (max-width: 560px) {
     width: 70px;
@@ -52,7 +53,7 @@ const DivCard = styled.div`
   }
 `;
 const SpanCounter = styled.span`
-  margin: 0 auto;
+  margin: 10px auto;
   font-size: 10px;
   font-weight: normal;
   text-transform: uppercase;
@@ -82,6 +83,7 @@ const SpanNumeros = styled.span`
   }
 `;
 
+//* Definimos el contador
 const contadorInicial = {
   seconds: '00',
   minutes: '00',
@@ -90,15 +92,30 @@ const contadorInicial = {
 };
 
 const Contador = ({ cuentaRegresivaMS }) => {
+  /**
+   * *Definimos el estado del contador, le ponemos el contador
+   * *inicial como su estado por defecto y lo desestructuramos
+   */
   const [contador, setContador] = useState(contadorInicial);
   const { seconds, minutes, hours, days } = contador;
 
+  /**
+   * * En el useEffect definimos un intervalo cada  1segundo
+   * * Dentro de ese  intervalo  pasamos una funcion que actualiza el tiempo
+   * * y recibe por props la  en milisegundos  la cuenta regresiva
+   *
+   */
   useEffect(() => {
     const id = setInterval(() => {
       actualizaTiempo(cuentaRegresivaMS);
     }, 1000);
     return () => clearInterval(id);
   }, [cuentaRegresivaMS]);
+
+  /**
+   * *En esta funcion recibimos por parametro  la cuenta regresiva en ms
+   * * la cual la pasamos en la funcion obtenerTiempo y actualizamos el estado  del contador
+   */
 
   const actualizaTiempo = (contador) => {
     setContador(obtenerTiempoAntes(contador));
